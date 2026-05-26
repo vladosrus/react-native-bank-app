@@ -22,7 +22,7 @@ const Transfer = ({ navigation }) => {
   const [errors, setErrors] = useState({});
 
   const handleTransfer = async () => {
-    let currentErrors = {};
+    const currentErrors = {};
     if (!fromAccount) currentErrors.fromAccount = 'Выберите счет списания';
     if (!toAccount) currentErrors.toAccount = 'Выберите счет получателя';
     if (fromAccount && toAccount && fromAccount === toAccount) {
@@ -51,7 +51,6 @@ const Transfer = ({ navigation }) => {
         },
       ]);
     } catch (err) {
-      console.error('Ошибка при выполнении перевода:', err);
       Alert.alert('Ошибка операции', err.message || 'Что-то пошло не так');
     }
   };

@@ -48,8 +48,6 @@ const TransactionHistory = () => {
     return matchesType && matchesStartDate && matchesEndDate;
   });
 
-  console.log('Отфильтрованные транзакции:', filteredTransactions);
-
   const openPickerChain = target => {
     setActiveTarget(target);
     setTempDate(

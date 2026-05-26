@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -22,7 +22,7 @@ const TabIcon = React.memo(({ routeName, focused }) => {
     icon = focused ? '📋' : '⏳';
   }
 
-  return <Text style={{ fontSize: 20 }}>{icon}</Text>;
+  return <Text style={styles.icon}>{icon}</Text>;
 });
 
 const getScreenOptions =
@@ -80,3 +80,5 @@ export default function RootNavigator() {
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({ icon: { fontSize: 20 } });
