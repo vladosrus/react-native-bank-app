@@ -1,0 +1,35 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# React Native
+.bundle/
+vendor/
+
+# Android
+android/build/
+android/.gradle/
+android/app/build/
+android/local.properties
+android/.idea/
+*.apk
+*.aab
+
+# iOS
+ios/build/
+ios/Pods/
+ios/DerivedData/
+*.xcworkspace/xcuserdata
+*.xcodeproj/xcuserdata
+
+# Metro
+.metro-health-check*
+
+# Jest
+coverage/
+
+# Misc
+.DS_Store
+*.env
+.expo/

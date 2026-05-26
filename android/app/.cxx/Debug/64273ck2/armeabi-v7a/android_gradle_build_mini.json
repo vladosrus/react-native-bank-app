@@ -1,0 +1,67 @@
+{
+  "buildFiles": [
+    "/Users/vlad_chikov/my_projects/BankApp/node_modules/@react-native-community/datetimepicker/android/build/generated/source/codegen/jni/CMakeLists.txt",
+    "/Users/vlad_chikov/my_projects/BankApp/node_modules/react-native-permissions/android/build/generated/source/codegen/jni/CMakeLists.txt",
+    "/Users/vlad_chikov/my_projects/BankApp/node_modules/react-native-safe-area-context/android/src/main/jni/CMakeLists.txt",
+    "/Users/vlad_chikov/my_projects/BankApp/node_modules/react-native-screens/android/src/main/jni/CMakeLists.txt",
+    "/Users/vlad_chikov/my_projects/BankApp/node_modules/react-native/ReactAndroid/cmake-utils/default-app-setup/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/vlad_chikov/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/vlad_chikov/my_projects/BankApp/android/app/.cxx/Debug/64273ck2/armeabi-v7a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/vlad_chikov/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/vlad_chikov/my_projects/BankApp/android/app/.cxx/Debug/64273ck2/armeabi-v7a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "react_codegen_safeareacontext::@7984cd80db47aa7b952a": {
+      "artifactName": "react_codegen_safeareacontext",
+      "abi": "armeabi-v7a",
+      "output": "/Users/vlad_chikov/my_projects/BankApp/android/app/build/intermediates/cxx/Debug/64273ck2/obj/armeabi-v7a/libreact_codegen_safeareacontext.so",
+      "runtimeFiles": [
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/3c01aea05d2737e987399f1309ae090e/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/2321ffcfab7439b6200de4724cf7ba76/transformed/react-android-0.85.3-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/2321ffcfab7439b6200de4724cf7ba76/transformed/react-android-0.85.3-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so"
+      ]
+    },
+    "react_codegen_RNPermissionsSpec::@7ad697819b753921c957": {
+      "artifactName": "react_codegen_RNPermissionsSpec",
+      "abi": "armeabi-v7a",
+      "runtimeFiles": []
+    },
+    "react_codegen_rnscreens::@25bcbd507e98d3a854ad": {
+      "artifactName": "react_codegen_rnscreens",
+      "abi": "armeabi-v7a",
+      "output": "/Users/vlad_chikov/my_projects/BankApp/android/app/build/intermediates/cxx/Debug/64273ck2/obj/armeabi-v7a/libreact_codegen_rnscreens.so",
+      "runtimeFiles": [
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/2321ffcfab7439b6200de4724cf7ba76/transformed/react-android-0.85.3-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/2321ffcfab7439b6200de4724cf7ba76/transformed/react-android-0.85.3-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/3c01aea05d2737e987399f1309ae090e/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so"
+      ]
+    },
+    "react_codegen_RNDateTimePickerCGen::@59b70ddc31ba2f8ef1d2": {
+      "artifactName": "react_codegen_RNDateTimePickerCGen",
+      "abi": "armeabi-v7a",
+      "runtimeFiles": []
+    },
+    "appmodules::@6890427a1f51a3e7e1df": {
+      "artifactName": "appmodules",
+      "abi": "armeabi-v7a",
+      "output": "/Users/vlad_chikov/my_projects/BankApp/android/app/build/intermediates/cxx/Debug/64273ck2/obj/armeabi-v7a/libappmodules.so",
+      "runtimeFiles": [
+        "/Users/vlad_chikov/my_projects/BankApp/android/app/build/intermediates/cxx/Debug/64273ck2/obj/armeabi-v7a/libreact_codegen_safeareacontext.so",
+        "/Users/vlad_chikov/my_projects/BankApp/android/app/build/intermediates/cxx/Debug/64273ck2/obj/armeabi-v7a/libreact_codegen_rnscreens.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/3c01aea05d2737e987399f1309ae090e/transformed/fbjni-0.7.0/prefab/modules/fbjni/libs/android.armeabi-v7a/libfbjni.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/2321ffcfab7439b6200de4724cf7ba76/transformed/react-android-0.85.3-debug/prefab/modules/jsi/libs/android.armeabi-v7a/libjsi.so",
+        "/Users/vlad_chikov/.gradle/caches/9.3.1/transforms/2321ffcfab7439b6200de4724cf7ba76/transformed/react-android-0.85.3-debug/prefab/modules/reactnative/libs/android.armeabi-v7a/libreactnative.so"
+      ]
+    }
+  }
+}
