@@ -1,1 +1,0 @@
-/Users/vlad_chikov/my_projects/BankApp/android/app/build/intermediates/cxx/Debug/64273ck2/obj/x86_64
