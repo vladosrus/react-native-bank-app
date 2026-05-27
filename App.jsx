@@ -1,19 +1,18 @@
-import React from 'react';
-import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
-import { store } from './src/store';
-import RootNavigator from './src/navigation/RootNavigator';
-import { useAppInit } from './src/hooks/useAppInit';
-import { COLORS } from './src/constants/theme';
+import RootNavigator from '@/navigation/RootNavigator';
+import { useAppInit } from '@/hooks/';
+import { COLORS } from '@/constants/';
+import { store } from '@/store';
 
 const AppContent = () => {
   const { checking, hasPermission } = useAppInit();
 
   if (checking) {
     return (
-      <View style={styles.center}>
+      <View style={s.center}>
         <ActivityIndicator size="large" color={COLORS.primary} />
       </View>
     );
@@ -21,8 +20,8 @@ const AppContent = () => {
 
   if (!hasPermission) {
     return (
-      <SafeAreaView style={styles.center}>
-        <Text style={styles.errorText}>
+      <SafeAreaView style={s.center}>
+        <Text style={s.errorText}>
           Для работы прототипа приложения требуется доступ к геопозиции и
           уведомлениям.
         </Text>
@@ -33,17 +32,15 @@ const AppContent = () => {
   return <RootNavigator />;
 };
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <SafeAreaProvider>
-        <AppContent />
-      </SafeAreaProvider>
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <SafeAreaProvider>
+      <AppContent />
+    </SafeAreaProvider>
+  </Provider>
+);
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   center: {
     flex: 1,
     justifyContent: 'center',
@@ -54,7 +51,7 @@ const styles = StyleSheet.create({
   errorText: {
     textAlign: 'center',
     fontSize: 16,
-    color: COLORS.error,
+    color: COLORS.danger,
     fontWeight: '500',
     lineHeight: 22,
   },

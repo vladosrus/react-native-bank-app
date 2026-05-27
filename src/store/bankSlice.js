@@ -1,12 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { api } from '../services/api';
+
+import { api } from '../services';
 
 export const fetchDashboardData = createAsyncThunk(
   'bank/fetchDashboard',
-  async () => {
-    const accounts = await api.getAccounts();
-    const transactions = await api.getTransactions();
-    return { accounts, transactions };
+  async (_, { rejectWithValue }) => {
+    try {
+      const [accounts, transactions] = await Promise.all([
+        api.getAccounts(),
+        api.getTransactions(),
+      ]);
+      return { accounts, transactions };
+    } catch (error) {
+      return rejectWithValue(error.message || 'Ошибка загрузки данных');
+    }
   },
 );
 
@@ -22,11 +29,15 @@ export const executeTransfer = createAsyncThunk(
         ...response,
       };
     } catch (error) {
-      // Передаем именно текст ошибки, чтобы поймать его в компонент через unwrapped результат
       return rejectWithValue(error.message || 'Ошибка сервера');
     }
   },
 );
+
+const setLoading = state => {
+  state.loading = true;
+  state.error = null;
+};
 
 const bankSlice = createSlice({
   name: 'bank',
@@ -39,49 +50,38 @@ const bankSlice = createSlice({
   reducers: {},
   extraReducers: builder => {
     builder
-      // Получение данных дашборда
-      .addCase(fetchDashboardData.pending, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(fetchDashboardData.fulfilled, (state, action) => {
+      .addCase(fetchDashboardData.pending, setLoading)
+      .addCase(fetchDashboardData.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.accounts = action.payload.accounts;
-        state.transactions = action.payload.transactions;
+        state.accounts = payload.accounts;
+        state.transactions = payload.transactions;
       })
-      .addCase(fetchDashboardData.rejected, (state, action) => {
+      .addCase(fetchDashboardData.rejected, (state, { payload }) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = payload;
       })
 
-      // Выполнение перевода (Включаем лоадер для кнопки перевода)
-      .addCase(executeTransfer.pending, state => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(executeTransfer.fulfilled, (state, action) => {
+      .addCase(executeTransfer.pending, setLoading)
+      .addCase(executeTransfer.fulfilled, (state, { payload }) => {
         state.loading = false;
-        const { fromAccount, toAccount, amount, transaction } = action.payload;
+        const { fromAccount, toAccount, amount, transaction } = payload;
 
-        // Чистое обновление массивов через создание новых объектов
-        state.accounts = state.accounts.map(acc => {
-          if (acc.id === fromAccount) {
-            return { ...acc, balance: acc.balance - amount };
+        state.accounts = state.accounts.map(account => {
+          switch (account.id) {
+            case fromAccount:
+              return { ...account, balance: account.balance - amount };
+            case toAccount:
+              return { ...account, balance: account.balance + amount };
+            default:
+              return account;
           }
-          if (acc.id === toAccount) {
-            return { ...acc, balance: acc.balance + amount };
-          }
-          return acc;
         });
 
-        // Добавляем новую транзакцию в начало списка истории
-        if (transaction) {
-          state.transactions.unshift(transaction);
-        }
+        if (transaction) state.transactions.unshift(transaction);
       })
-      .addCase(executeTransfer.rejected, (state, action) => {
+      .addCase(executeTransfer.rejected, (state, { payload }) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = payload;
       });
   },
 });

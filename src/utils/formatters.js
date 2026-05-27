@@ -1,29 +1,18 @@
-/**
- * Форматирует число в валютный формат (например: 150 000 ₽)
- */
-export const formatCurrency = (amount, currency = 'RUB') => {
-  const currencySigns = {
-    RUB: '₽',
-    USD: '$',
-    EUR: '€',
-  };
+import { CURRENCY_SIGNS, DEFAULT_CURRENCY } from '@/constants/currencies';
 
-  if (isNaN(amount)) return `0 ${currencySigns[currency] || currency}`;
+export const formatCurrency = (amount, currency = DEFAULT_CURRENCY) => {
+  const sign = CURRENCY_SIGNS[currency] ?? currency;
+  const num = Number(amount);
 
-  return `${Number(amount).toLocaleString('ru-RU')} ${
-    currencySigns[currency] || currency
-  }`;
+  if (!Number.isFinite(num)) return `0 ${sign}`;
+
+  return `${num.toLocaleString('ru-RU')} ${sign}`;
 };
 
-/**
- * Форматирует строку даты в красивый вид (например: 21 мая 2026)
- */
-export const formatDate = dateString => {
-  if (!dateString) return '';
-  const date = new Date(dateString);
-  return date.toLocaleDateString('ru-RU', {
+export const formatTransactionDate = dateString =>
+  new Date(dateString).toLocaleString('ru-RU', {
     day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+    month: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
   });
-};

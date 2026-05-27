@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   extends: '@react-native',
+  plugins: ['import'],
   rules: {
     // Отладочные вызовы
     'no-console': 'warn',
@@ -16,6 +17,9 @@ module.exports = {
     'eqeqeq': ['error', 'always'],
     'no-var': 'error',
     'prefer-const': 'warn',
+
+    // Импорты
+    'import/no-duplicates': 'warn',
 
     // React / React Native
     'react/self-closing-comp': 'warn',
